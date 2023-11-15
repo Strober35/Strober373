@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma Bibliothèque de Livres Électroniques</title>
+    <style>
+        .book {
+            margin: 10px;
+            border: 1px solid transparent;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer; /* Curseur pour indiquer qu'il est cliquable */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Styles pour la fenêtre modale (informations détaillées) */
+        .modal {
+            display: none; /* Par défaut, cachée */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            max-width: 80%;
+        }
+
+        /* Styles pour le bouton "Fermer" de la fenêtre modale */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue dans Ma Bibliothèque de Livres Électroniques</h1>
+
+    <!-- Livre 1 -->
+    <div class="book" onclick="showDetails('Livre 1', 'Auteur 1', 'couverture_livre1.jpg', 'Description du Livre 1')">
+        <a href="telechargement_livre1.pdf"><img src="couverture_livre1.jpg" alt="Couverture du Livre 1"></a>
+        <h2>Livre 1</h2>
+        <p>Auteur : Auteur 1</p>
+        <a href="telechargement_livre1.pdf" download>Télécharger</a>
+    </div>
+
+    <!-- Livre 2 -->
+    <div class="book" onclick="showDetails('Livre 2', 'Auteur 2', 'couverture_livre2.jpg', 'Description du Livre 2')">
+        <a href="telechargement_livre2.pdf"><img src="couverture_livre2.jpg" alt="Couverture du Livre 2"></a>
+        <h2>Livre 2</h2>
+        <p>Auteur : Auteur 2</p>
+        <a href="telechargement_livre2.pdf" download>Télécharger</a>
+    </div>
+
+    <!-- Fenêtre modale pour afficher les informations détaillées -->
+    <div id="bookDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="hideDetails()">&times;</span>
+            <h2 id="bookTitle"></h2>
+            <p id="bookAuthor"></p>
+            <img id="bookCover" src="" alt="">
+            <p id="bookDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher les informations détaillées dans la fenêtre modale
+        function showDetails(title, author, cover, description) {
+            document.getElementById("bookTitle").textContent = title;
+            document.getElementById("bookAuthor").textContent = "Auteur : " + author;
+            document.getElementById("bookCover").src = cover;
+            document.getElementById("bookDescription").textContent = description;
+            document.getElementById("bookDetailsModal").style.display = "block";
+        }
+
+        // Fonction pour cacher la fenêtre modale
+        function hideDetails() {
+            document.getElementById("bookDetailsModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
